@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/ui-router-animate.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+  <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+</head>
+<body>
+  <div ng-controller="HeaderController">
+    <div ng-include src="'views/layout/headerMenu.html'" ng-show="mostrarHeader()" ></div>
+    <div ng-include src="'views/layout/header.html'" ng-show="current.name ==='login'" ></div>
+  </div>
+
+	<div ui-view style="height: 100%;"></div>
+
+  <!-- JS -->
+  <script src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src= "assets/js/angular-ui-router.min.js" ></script>
+  <script type="text/javascript" src="assets/js/sha256.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-jwt.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/controllers/controllers.js"></script>
+  <script type="text/javascript" src="assets/js/services/services.js"></script>
+  <script type="text/javascript" src="assets/js/angular-animate.min.js"></script>
+  <script type="text/javascript" src="assets/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+  <script type="text/javascript" src="assets/js/standalone-framework.js"></script>
+  <script type="text/javascript" src="assets/js/highcharts.js"></script>
+
+  <script type="text/javascript" src="assets/js/lodash.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-simple-logger.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-google-maps.min.js"></script>
+
+  <script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+
+</body>
+
+</html>

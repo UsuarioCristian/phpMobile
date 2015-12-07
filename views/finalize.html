@@ -1,0 +1,27 @@
+<div style="margin-top: 5em">
+
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <label> Seleccione los comercios visitados:</label>
+
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <span ng-repeat="commerce in allCommerce">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="{{commerce.name}}" ng-model="commerce.visited">{{commerce.name}}
+        </label>
+      </div>
+    </span>
+
+  </div>
+  
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-left: 25%">
+    <button class="btn btn-success btn-block" ng-click="finalizar()">Finalizar Recorrido</button>
+
+  </div>
+
+
+</div>
+ 

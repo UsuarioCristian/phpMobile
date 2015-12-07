@@ -1,0 +1,31 @@
+
+
+	
+	<div style="margin-top: 5em">
+		
+		<div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<label for="tipoGrafica">Seleccionar un tipo de grafica</label>
+			<select class="form-control" ng-model="graficaSeleccionada" ng-change= "changeChart()" ng-options="grafica as grafica.nombre for grafica in tiposGraficas track by grafica.id">		  </select>
+			<div ng-hide="graficaSeleccionada.id == 2">
+				<label for="commerceSelected">Seleccionar Comercio</label>
+				<select class="form-control" ng-model="commerceSelected" ng-change= "changeCommerce()"         ng-options="commerce as commerce.name for commerce in allCommerce track by commerce.id"> </select>
+			</div>
+			<div ng-show="graficaSeleccionada.id == 2">
+				<label for="tipoGrafica">Seleccionar Producto</label>
+				<select class="form-control" ng-model="productSelected" ng-change= "changeProduct()"         ng-options="product as product.name for product in allProducts track by product.id"> </select>
+			</div>
+		</div>
+
+		<div ng-show="graficaSeleccionada.id == 1" id="container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="height:350px;"></div> 
+		<div ng-show="graficaSeleccionada.id == 2" id="container2" class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="height:350px;"></div>
+
+
+	</div>
+	
+
+
+
+
+
+
+<button class="btn btn-primary btn-lg" ng-click="verificarProductos()"> VERIFICAR</button>

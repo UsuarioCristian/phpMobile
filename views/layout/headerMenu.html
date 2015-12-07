@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#first" du-smooth-scroll>Inicio</a>
+        		
+        
+      </div>
+    
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" >
+      
+        <ul class="nav navbar-nav">
+          <li ><a ui-sref="graficas" du-smooth-scroll class="btn btn-navbar" ng-click="navCollapsed = true">Graficas</a></li>        
+          <li><a ui-sref="maps" du-smooth-scroll   ng-click="navCollapsed = true" class="btn btn-navbar">Mapa</a></li> 
+          <li><a ui-sref="stock" ng-click="navCollapsed = true" class="btn btn-navbar">Stock</a></li>
+          <li><a ui-sref="order" ng-click="navCollapsed = true" class="btn btn-navbar">Pedidos</a></li>              
+          <li uib-dropdown>
+            <a href="#" uib-dropdown-toggle >Otro <b class="caret"></b></a>
+            <ul class="uib-dropdown-menu">
+              <li><a ui-sref="finalize" du-smooth-scroll ng-click="navCollapsed = true" class="btn btn-navbar">Finalizar</a></li>
+              <li><a href="#fourth" du-smooth-scroll ng-click="navCollapsed = true" class="btn btn-navbar">otra cosa</a></li>              
+            </ul>
+          </li>
+          
+        </ul>
+        <ul class="nav pull-right">
+        <li><a class="btn btn-default navbar-btn" ui-sref="home" ng-click="logout()">Salir</a></li>
+        </ul>
+                        
+      </div><!-- /.navbar-collapse -->
+    </nav>
