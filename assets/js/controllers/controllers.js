@@ -7,11 +7,13 @@ angular.module("app.controllers",[
 .controller("LoginController", ['$scope', 'LoginFactory', '$state', 'store',function($scope, LoginFactory, $state, store){
 	$scope.user = {};
 	$scope.signin = function(){
+		console.log("click login");
 		LoginFactory.login($scope.user).then(
 				function(response){			
 					$scope.user.password = ""; // Borrar la contraseña, ya que solo se necesita el token
 					store.set('token', response.data);
 					$state.go("home");
+					console.log("respuesta");
 				},				
 				function(response){
 					//error messagge

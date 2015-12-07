@@ -7,10 +7,16 @@ value('version', '0.1')
 
 .factory('ApiEndpointFactory', ['$http','$location', function($http, $location) {
 	
-	var ApiEndpoint = $location.protocol() + "://" + $location.host() + ":" + $location.port();
-	
+	//var ApiEndpoint = $location.protocol() + "://" + $location.host() + ":" + $location.port();
+	var ApiEndpoint;
 	return{
-		ApiEndpoint : ApiEndpoint
+		//ApiEndpoint : ApiEndpoint,
+		setIp: function(ip){
+			ApiEndpoint = ip;
+		},
+		getApiEndpoint: function(){
+			return ApiEndpoint;
+		}
 	}	
 	
 }])
@@ -18,6 +24,7 @@ value('version', '0.1')
 .factory('LoginFactory', ['$http','ApiEndpointFactory', function($http, ApiEndpointFactory) {
 	return{
 		login:function(user){
+			ApiEndpointFactory.setIp(user.ip)
 			//Asi funciona la encriptacion:
 			/*var objHashResult=CryptoJS.SHA256(user.password)
 			var strHashResult=objHashResult.toString(CryptoJS.enc.Hex);
@@ -26,8 +33,9 @@ value('version', '0.1')
 				password : CryptoJS.SHA256(user.password).toString(CryptoJS.enc.Hex),
 				name : user.username
 			}
-			
-			return $http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/login', usuario)
+			console.log(user.ip);
+			console.log(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/login');
+			return $http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/login', usuario)
 		}
 	}
 }])
@@ -39,7 +47,7 @@ value('version', '0.1')
 			var object = {
 				id : userId
 			}
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/routesbyemployee', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/routesbyemployee', object)
 			.then(function(response){
 				console.log(response);
 				
@@ -56,7 +64,7 @@ value('version', '0.1')
 			var object = {
 				employeeId : userId
 			}
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/currentroute', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/currentroute', object)
 			.then(function(response){				
 				route = response.data;
 				
@@ -73,7 +81,7 @@ value('version', '0.1')
 				visited : comercio.visited
 			}
 			
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/finalizeroute', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/finalizeroute', object)
 			.then(function(response){				
 				
 				
@@ -100,7 +108,7 @@ value('version', '0.1')
 
 		getAllCommerce:function(){
 			
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/allcommerce')
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/allcommerce')
 			.then(function(response){
 				
 				return response.data;
@@ -112,7 +120,7 @@ value('version', '0.1')
 		loadAllCommerce: function(){
 			var self = this;
 			allCommerce = [];
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/allcommerce')
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/allcommerce')
 			.then(function(response){				
 				//allCommerce = response.data;
 				for (var i = 0; i < response.data.length; i++) {					
@@ -133,7 +141,7 @@ value('version', '0.1')
 			var object = {
 				id : commerce.id
 			}
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/allproductbycommerce', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/allproductbycommerce', object)
 			.then(function(response){
 				var commerceCopy = {
 						id: commerce.id,
@@ -164,7 +172,7 @@ value('version', '0.1')
 		},
 
 		stockSave : function(object){
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/stocksave', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/stocksave', object)
 			.then(function(response){
 				swal("Guardado!", "Se ha guardado correctamente el stock", "success");
 				
@@ -174,7 +182,7 @@ value('version', '0.1')
 		},
 
 		orderSave : function(object){
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/ordersave', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/ordersave', object)
 			.then(function(response){
 				swal("Guardado!", "Se ha guardado correctamente el pedido", "success");
 				
@@ -190,7 +198,7 @@ value('version', '0.1')
 				productId : product.id
 			}
 
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/productsold', object)
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/productsold', object)
 			.then(function(response){
 				product.sold = response.data;				
 				
@@ -209,7 +217,7 @@ value('version', '0.1')
 		},
 
 		loadAllProducts:function(){
-			$http.post(ApiEndpointFactory.ApiEndpoint +'/php2015/backend/web/resource/allproduct')
+			$http.post(ApiEndpointFactory.getApiEndpoint() +'/php2015/backend/web/resource/allproduct')
 			.then(function(response){				
 				allProducts = response.data;
 			}, function(response){

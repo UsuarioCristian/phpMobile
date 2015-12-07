@@ -1,7 +1,7 @@
 
 	
 	<div style="margin-top: 5em;">
-		<div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+		<div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4 form-group-lg" >
 			<div class="checkbox"><label><input type="checkbox" ng-model="checkboxModel.value" ng-change=changeRecorrido()>Solo prioridad </label></div>
 			<label for="commerceSelected">Ir en</label>
 				<select class="form-control" ng-model="recorridoSelected" ng-change= "changeRecorrido()" ng-options="recorrido as recorrido.nombre for recorrido in recorridoTipos track by recorrido.id"> </select>

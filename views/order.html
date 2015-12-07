@@ -2,7 +2,8 @@
 	
 	<div class="row vertical-center">
 		
-		<div class="form-group col-xs-8 col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-2" >
+		<div class="form-group col-xs-8 col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-2 form-group-lg" >
+			<h2> Ingresar pedido</h2>
 			<div>
 				<label for="commerceSelected">Seleccionar Comercio</label>
 				<select class="form-control" ng-model="commerceSelected" ng-change= "changeCommerce()" ng-options="commerce as commerce.name for commerce in allCommerce track by commerce.id"> </select>
@@ -16,7 +17,7 @@
 				<input type="number" class="form-control" id="cantidad" ng-model="cantidadOrder" >
 			</div>
 			<div style="margin-top: 1em">
-				<button class="btn btn-success btn-block" ng-click="saveOrder()">Tomar Pedido</button>
+				<button class="btn btn-success btn-block btn-lg" ng-click="saveOrder()">Tomar Pedido</button>
 			</div>
 			
 		</div>

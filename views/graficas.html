@@ -3,15 +3,15 @@
 	
 	<div style="margin-top: 5em">
 		
-		<div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-			<label for="tipoGrafica">Seleccionar un tipo de grafica</label>
+		<div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4 form-group-lg">
+			<label for="tipoGrafica"> <h4>Seleccionar un tipo de grafica</h4> </label>
 			<select class="form-control" ng-model="graficaSeleccionada" ng-change= "changeChart()" ng-options="grafica as grafica.nombre for grafica in tiposGraficas track by grafica.id">		  </select>
 			<div ng-hide="graficaSeleccionada.id == 2">
-				<label for="commerceSelected">Seleccionar Comercio</label>
+				<label for="commerceSelected"> <h4>Seleccionar Comercio</h4> </label>
 				<select class="form-control" ng-model="commerceSelected" ng-change= "changeCommerce()"         ng-options="commerce as commerce.name for commerce in allCommerce track by commerce.id"> </select>
 			</div>
 			<div ng-show="graficaSeleccionada.id == 2">
-				<label for="tipoGrafica">Seleccionar Producto</label>
+				<label for="tipoGrafica"> <h4>Seleccionar Producto</h4> </label>
 				<select class="form-control" ng-model="productSelected" ng-change= "changeProduct()"         ng-options="product as product.name for product in allProducts track by product.id"> </select>
 			</div>
 		</div>
